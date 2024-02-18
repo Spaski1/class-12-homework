@@ -1,0 +1,71 @@
+.container{
+    background-color: lightgrey;
+    padding-top:30px;
+    padding-bottom: 30px;
+}
+.navContainer h1{
+    color: blue;
+}
+.navContainer button{
+    color: white;
+    background-color: blue;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+}
+.navContainer{
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.inputDiv{
+    margin-top: 20px;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.inputDiv input{
+    width: 500px;
+    height: 20px;
+}
+#searchBtn{
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+}
+#resetBtn{
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+}
+#searchBtn:hover{
+    opacity: 0.8;
+}
+#resetBtn:hover{
+    opacity: 0.8;
+}
+#countryContainer img{
+   width: 300px;
+   height: 150px;
+}
+#countryContainer div:hover{
+    background-color: royalblue;
+ }
+#countryContainer{
+    margin-top: 50px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+#countryContainer div{
+    padding: 10px;
+    max-width: 300px;
+    max-height: 350px;
+    border-radius: 3px;
+    background-color: rgba(0, 128, 255, 0.9);
+}
