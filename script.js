@@ -23,10 +23,10 @@ async function getCountryData(country) {
     }
 }
 
-async function dataForEuro(country) {
+async function dataForEuro() {
     loaderFunction();
     try {
-        let response = await fetch(`https://restcountries.com/v2/name/${country}`);
+        let response = await fetch(`https://restcountries.com/v3.1/currency/eur`);
         let data = await response.json();
         console.log(data);
         getCountriesUsingEur(data)
@@ -38,7 +38,7 @@ async function dataForEuro(country) {
 async function dataForEnglish(country) {
     loaderFunction();
     try {
-        let response = await fetch(`https://restcountries.com/v2/name/${country}`);
+        let response = await fetch(`https://restcountries.com/v3.1/lang/english`);
         let data = await response.json();
         console.log(data);
         getCountriesTakingEnglish(data)
@@ -68,10 +68,10 @@ function writeCountryData(data) {
         div.classList.add("country");
         div.innerHTML = `
         <img src="${data[i].flag}">
-        <h2>Name: ${data[i].name}</h2>
-        <p>Population: ${data[i].population}</p>
-        <p>Capital: ${data[i].capital}</p>
-        <p>Area: ${data[i].area} km2&sup2</p>
+        <h2>${data[i].name}</h2>
+        <p>${data[i].name} is a country with a population of ${data[i].population}
+        with the capitol city ${data[i].capital}.
+        </p>
         `;
          countryContainer.appendChild(div);
     }
@@ -80,47 +80,40 @@ function writeCountryData(data) {
 
 countriesUsingEurBtn.addEventListener("click", () => {
     countryContainer.innerHTML = "";
-    dataForEuro(inputCountry.value);
+    dataForEuro();
 })
 function getCountriesUsingEur(data) {
    for (let i = 0; i < data.length; i++) {
-    if (data[i].currencies[0].name === "Euro") {
         let div = document.createElement("div");
         div.classList.add("country");
         div.innerHTML = `
-        <img src="${data[i].flag}">
-        <h2>Name: ${data[i].name}</h2>
-        <p>Population: ${data[i].population}</p>
-        <p>Capital: ${data[i].capital}</p>
-        <p>Area: ${data[i].area} km2&sup2</p>
-        <p>currency: ${data[i].currencies[0].name}</p>
+        <img src="${data[i].flags.svg}">
+        <h2>${data[i].name.common}</h2>
+        <p>${data[i].name.common} is a country with a population of ${data[i].population}
+        with the capitol city ${data[i].capital}.
+        </p>
         `;
          countryContainer.appendChild(div);
     }
-    
-   }
 }
 
 continueTakingEnglishBtn.addEventListener("click", () => {
     countryContainer.innerHTML = "";
-    dataForEnglish(inputCountry.value);
+    dataForEnglish();
 })
 function getCountriesTakingEnglish(data) {
     for (let i = 0; i < data.length; i++) {
-        if (data[i].languages[0].name === "English") {
             let div = document.createElement("div");
             div.classList.add("country");
             div.innerHTML = `
-            <img src="${data[i].flag}">
-            <h2>Name: ${data[i].name}</h2>
-            <p>Population: ${data[i].population}</p>
-            <p>Capital: ${data[i].capital}</p>
-            <p>Area: ${data[i].area} km2&sup2</p>
-            <p>language: ${data[i].languages[0].name}</p>
+            <img src="${data[i].flags.svg}">
+            <h2>${data[i].name.common}</h2>
+            <p>${data[i].name.common} is a country with a population of ${data[i].population}
+            with the capitol city ${data[i].capital}.
+            </p>
             `;
              countryContainer.appendChild(div);
         }
-       }
 }
 function loaderFunction() {
     loader.style.display = "block";
