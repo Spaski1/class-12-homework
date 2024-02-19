@@ -1,5 +1,5 @@
 body{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:Arial, Helvetica, sans-serif
 }
 .container{
     background-color: lightgrey;
@@ -78,7 +78,7 @@ body{
     height: 150px;
 }
 #countryContainer div:hover{
-    background-color: royalblue;
+    background-color: lightblue;
  }
 #countryContainer{
     display:flex;
@@ -88,12 +88,20 @@ body{
     gap: 10px;
 }
 #countryContainer div{
-    padding: 10px;
+    /* padding: 10px; */
     max-width: 300px;
     max-height: fit-content;
     border-radius: 3px;
-    background-color: rgba(0, 128, 255, 0.9);
+    border: 1px solid gray;
+    background-color:wheat;
 }
+.country h2{
+    padding: 10px;
+}
+.country p{
+    padding: 10px;
+}
+
 #loader {
     display: none;
     margin-left: auto;
