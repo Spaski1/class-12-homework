@@ -26,7 +26,7 @@ async function getCountryData(country) {
 async function dataForEuro() {
     loaderFunction();
     try {
-        let response = await fetch(`https://restcountries.com/v3.1/all?`);
+        let response = await fetch(`https://restcountries.com/v3.1/currency/eur`);
         let data = await response.json();
         console.log(data);
         getCountriesUsingEur(data)
@@ -38,7 +38,7 @@ async function dataForEuro() {
 async function dataForEnglish(country) {
     loaderFunction();
     try {
-        let response = await fetch(`https://restcountries.com/v3.1/all?`);
+        let response = await fetch(`https://restcountries.com/v3.1/lang/english`);
         let data = await response.json();
         console.log(data);
         getCountriesTakingEnglish(data)
@@ -50,7 +50,7 @@ async function dataForEnglish(country) {
 
 searchBtn.addEventListener("click", () => {
     countryContainer.innerHTML = "";
-    getCountryData();
+    getCountryData(inputCountry.value);
     
 })
 resetBtn.addEventListener("click", () => {
@@ -80,11 +80,10 @@ function writeCountryData(data) {
 
 countriesUsingEurBtn.addEventListener("click", () => {
     countryContainer.innerHTML = "";
-    dataForEuro(inputCountry.value);
+    dataForEuro();
 })
 function getCountriesUsingEur(data) {
    for (let i = 0; i < data.length; i++) {
-    if (data[i].currencies =  "EUR") {
         let div = document.createElement("div");
         div.classList.add("country");
         div.innerHTML = `
@@ -96,17 +95,14 @@ function getCountriesUsingEur(data) {
         `;
          countryContainer.appendChild(div);
     }
-    
-   }
 }
 
 continueTakingEnglishBtn.addEventListener("click", () => {
     countryContainer.innerHTML = "";
-    dataForEnglish(inputCountry.value);
+    dataForEnglish();
 })
 function getCountriesTakingEnglish(data) {
     for (let i = 0; i < data.length; i++) {
-        if (data[i].languages === "eng") {
             let div = document.createElement("div");
             div.classList.add("country");
             div.innerHTML = `
@@ -118,7 +114,6 @@ function getCountriesTakingEnglish(data) {
             `;
              countryContainer.appendChild(div);
         }
-       }
 }
 function loaderFunction() {
     loader.style.display = "block";
